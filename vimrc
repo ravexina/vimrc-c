@@ -59,8 +59,23 @@ nnoremap <cr>           :nohlsearch<cr>
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_delay = 2000
 let g:ale_fix_on_save = 1
-let g:ale_fixers =  {'*': ['remove_trailing_lines', 'trim_whitespace']}
-let g:ale_lint_on_text_changed = 'always'
+let g:ale_fixers =  {'*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'python': ['black', 'isort'],
+            \ 'html': ['prettier'],
+            \ 'sh': ['shfmt'],
+            \ 'css': ['prettier'],
+            \ 'json': ['prettier'],
+            \ 'javascript': ['prettier'],
+            \ 'javascriptreact': ['prettier'],
+            \ 'php': ['php_cs_fixer'],
+            \ 'go': ['gofmt'],
+            \}
+let g:ale_linters = {
+            \ 'python': ['flake8', 'pylint'],
+            \ 'php': ['php', 'phpcs'],
+            \ 'yaml': ['yamllint'],
+            \ 'js': ['eslint']}
+let g:ale_python_flake8_options = '--max-line-length=88 --exclude=.git,__pycache__,venv --ignore=E203,W503,E501'
 
 
 " Fzf
